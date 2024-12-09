@@ -292,19 +292,19 @@ func GameStart() { // Démarrage du jeu
 		switch filename {
 		case "1":
 			consoleReset()
-			filenameresult = "words.txt"
+			filenameresult = "/home/leo/Documents/Hangman-GO/words.txt"
 
 		case "2":
 			consoleReset()
-			filenameresult = "words2.txt"
+			filenameresult = "/home/leo/Documents/Hangman-GO/words2.txt"
 
 		case "3":
 			consoleReset()
-			filenameresult = "words3.txt"
+			filenameresult = "/home/leo/Documents/Hangman-GO/words3.txt"
 		default:
 			consoleReset()
 			fmt.Printf("Error, default difficulty = 1\n\n")
-			filenameresult = "words.txt"
+			filenameresult = "/home/leo/Documents/Hangman-GO/words.txt"
 		}
 		fmt.Printf("Good luck, you have 10 attempts, you can stop the game with 'STOP'\n\n")
 		hideWordStart(&jeu, randomWord(filenameresult))

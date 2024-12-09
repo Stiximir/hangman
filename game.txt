@@ -1,1 +1,1 @@
-{"Life":10,"Word":"fenetre","HiddenWord":"_e_et_e","Letter":"","AlreadyUsed":["e","e","t","e"]}
+{"Life":8,"Word":"cheveux","HiddenWord":"che_e__","Letter":"","AlreadyUsed":["h","e","e","C","M","m"]}
