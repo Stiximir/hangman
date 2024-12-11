@@ -1,6 +1,6 @@
 package main
 
-import "github.com/Stiximir/hangman"
+import hangman "github.com/Stiximir/hangmann"
 
 func main() {
 	hangman.GameStart()
