@@ -99,14 +99,14 @@ func HideWordStart(jeu *Data, randWord string) {
 			if len(jeu.AlreadyUsed) == 0 {
 				jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
 			} else {
-				for i, n := range jeu.AlreadyUsed {
+				for _, n := range jeu.AlreadyUsed {
 					if n == string(v) {
 						doubleCheck = false
 					}
-					if len(jeu.AlreadyUsed) == i-1 && doubleCheck {
-						jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
-					}
 				}
+			}
+			if doubleCheck {
+				jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
 			}
 		} else {
 			hiddenword = hiddenword + "_"
