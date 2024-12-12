@@ -126,7 +126,7 @@ func hideWordStart(jeu *Data, randWord string) { // Mise en place des variables 
 }
 
 func DisplayHangman(jeu *Data) {
-	hangman := readWordsFromFile("hangman.txt")
+	hangman := readWordsFromFile("Hangman-GO/hangman.txt")
 	var linenumber int = 8
 	linenumber = linenumber * (10 - jeu.Life - 1)
 	fmt.Println()
