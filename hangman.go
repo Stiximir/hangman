@@ -103,7 +103,7 @@ func HideWordStart(jeu *Data, randWord string) {
 					if n == string(v) {
 						doubleCheck = false
 					}
-					if len(jeu.AlreadyUsed) == i && doubleCheck {
+					if len(jeu.AlreadyUsed) == i-1 && doubleCheck {
 						jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
 					}
 				}
