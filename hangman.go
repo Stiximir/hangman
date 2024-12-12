@@ -126,7 +126,7 @@ func hideWordStart(jeu *Data, randWord string) { // Mise en place des variables 
 }
 
 func DisplayHangman(jeu *Data) {
-	hangman := readWordsFromFile("hangman.txt")
+	hangman := readWordsFromFile("Hangman-GO/hangman.txt")
 	var linenumber int = 8
 	linenumber = linenumber * (10 - jeu.Life - 1)
 	fmt.Println()
@@ -292,19 +292,19 @@ func GameStart() { // Démarrage du jeu
 		switch filename {
 		case "1":
 			consoleReset()
-			filenameresult = "/home/leo/Documents/Hangman-GO/words.txt"
+			filenameresult = "Hangman-GO/words.txt"
 
 		case "2":
 			consoleReset()
-			filenameresult = "/home/leo/Documents/Hangman-GO/words2.txt"
+			filenameresult = "Hangman-GO/words2.txt"
 
 		case "3":
 			consoleReset()
-			filenameresult = "/home/leo/Documents/Hangman-GO/words3.txt"
+			filenameresult = "Hangman-GO/words3.txt"
 		default:
 			consoleReset()
 			fmt.Printf("Error, default difficulty = 1\n\n")
-			filenameresult = "/home/leo/Documents/Hangman-GO/words.txt"
+			filenameresult = "Hangman-GO/words.txt"
 		}
 		fmt.Printf("Good luck, you have 10 attempts, you can stop the game with 'STOP'\n\n")
 		hideWordStart(&jeu, randomWord(filenameresult))
