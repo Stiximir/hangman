@@ -96,12 +96,16 @@ func HideWordStart(jeu *Data, randWord string) {
 		}
 		if reveal {
 			hiddenword = hiddenword + string(v)
-			for i, n := range jeu.AlreadyUsed {
-				if n == string(v) {
-					doubleCheck = false
-				}
-				if len(jeu.AlreadyUsed) == i && doubleCheck {
-					jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
+			if len(jeu.AlreadyUsed) == 0 {
+				jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
+			} else {
+				for i, n := range jeu.AlreadyUsed {
+					if n == string(v) {
+						doubleCheck = false
+					}
+					if len(jeu.AlreadyUsed) == i && doubleCheck {
+						jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
+					}
 				}
 			}
 		} else {
