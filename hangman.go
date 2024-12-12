@@ -62,6 +62,7 @@ func readWordsFromFile(filename string) []string { // Lecture du fichier, retour
 }
 
 func HideWordStart(jeu *Data, randWord string) {
+	var doubleCheck bool
 	jeu.Word = randWord // Le mot complet dans jeu.Word
 	hiddenword := ""    // Le mot incomplet qui va être construit
 	rand.Seed(time.Now().UnixNano())
@@ -85,6 +86,7 @@ func HideWordStart(jeu *Data, randWord string) {
 		}
 	}
 	for _, v := range randWord {
+		doubleCheck = true
 		reveal := false
 		for _, n := range randomlettervalue {
 			if n == v {
@@ -94,7 +96,14 @@ func HideWordStart(jeu *Data, randWord string) {
 		}
 		if reveal {
 			hiddenword = hiddenword + string(v)
-			jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
+			for i, n := range jeu.AlreadyUsed {
+				if n == string(v) {
+					doubleCheck = false
+				}
+				if len(jeu.AlreadyUsed) == i && doubleCheck {
+					jeu.AlreadyUsed = append(jeu.AlreadyUsed, string(v))
+				}
+			}
 		} else {
 			hiddenword = hiddenword + "_"
 		}
