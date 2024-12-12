@@ -80,7 +80,7 @@ func readWordsFromFile(filename string) []string { // Lecture du fichier, retour
 	return words
 }
 
-func hideWordStart(jeu *Data, randWord string) { // Mise en place des variables Word et Hiddenword de la structure jeu
+func HideWordStart(jeu *Data, randWord string) { // Mise en place des variables Word et Hiddenword de la structure jeu
 	jeu.Word = randWord // Le mot complet dans jeu.Word
 	hiddenword := ""    // le mot incomplet qui va etre construit
 	rand.Seed(time.Now().UnixNano())
@@ -157,14 +157,14 @@ func lives(jeu *Data) { // Gestion des vies et de la lose
 	}
 }
 
-func victoryCheck(jeu *Data) bool { // Gestion de la victoire
+func VictoryCheck(jeu *Data) bool { // Gestion de la victoire
 	if jeu.Word == jeu.HiddenWord || jeu.Letter == jeu.Word {
 		return true
 	}
 	return false
 }
 
-func updWord(jeu *Data) { // Update le mot a chaque requete du joueur
+func UpdWord(jeu *Data) { // Update le mot a chaque requete du joueur
 	consoleReset()
 	hiddenRunes := []rune(jeu.HiddenWord) // Ajout de chacune de ces valeurs en rune pour des raisons d'écriture de string plus simple
 	wordRunes := []rune(jeu.Word)
@@ -181,14 +181,14 @@ func updWord(jeu *Data) { // Update le mot a chaque requete du joueur
 	}
 	if !success || (len(jeu.Letter) > 1 && jeu.Letter != jeu.Word) { // Vérification si la vérif de la lettre est pas vrai ou si on vérif un mot et que le mot est faux
 		lives(jeu)
-	} else if !victoryCheck(jeu) { // Réecriture du mot caché
+	} else if !VictoryCheck(jeu) { // Réecriture du mot caché
 		jeu.HiddenWord = string(hiddenRunes)
 		for i := 0; i < len(jeu.HiddenWord); i++ {
 			fmt.Print(string(jeu.HiddenWord[i]), " ")
 		}
 		fmt.Println()
 	}
-	if victoryCheck(jeu) { // Si on a gagné
+	if VictoryCheck(jeu) { // Si on a gagné
 		consoleReset()
 		fmt.Println("Congratulations, you found", jeu.Word, "\n")
 		DisplayHangman(jeu)
@@ -267,11 +267,11 @@ func input(jeu *Data) { // Demander au joueur une lettre
 			fmt.Println()
 			input(jeu)
 		}
-		updWord(jeu)
+		UpdWord(jeu)
 	}
 }
 
-func randomWord(filename string) string { // Prendre aléatoirement un mot de la liste choisis en paramètre
+func RandomWord(filename string) string { // Prendre aléatoirement un mot de la liste choisis en paramètre
 	words := readWordsFromFile(filename)
 	rand.Seed(time.Now().UnixNano())
 	randomWord := words[rand.Intn(len(words))]
@@ -307,6 +307,6 @@ func GameStart() { // Démarrage du jeu
 			filenameresult = "Data/words.txt"
 		}
 		fmt.Printf("Good luck, you have 10 attempts, you can stop the game with 'STOP'\n\n")
-		hideWordStart(&jeu, randomWord(filenameresult))
+		HideWordStart(&jeu, RandomWord(filenameresult))
 	}
 }
