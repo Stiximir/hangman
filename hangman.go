@@ -157,6 +157,7 @@ func UpdWord(jeu *Data) string {
 		if len(jeu.Letter) > 1 {
 			jeu.Life += 1
 		}
+		jeu.HiddenWord = jeu.Word
 		return fmt.Sprintf("Congratulations, you found %s! You had %v lives remaining.", jeu.Word, jeu.Life)
 	}
 	jeu.HiddenWord = string(hiddenRunes)
